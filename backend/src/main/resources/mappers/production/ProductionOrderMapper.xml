@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mespractice.production.mapper.ProductionOrderMapper">
+    <select id="findRecentOrders" resultType="com.mespractice.production.dto.ProductionOrderResponse">
+        SELECT
+            id,
+            order_no,
+            item_name,
+            target_quantity,
+            due_date,
+            status
+        FROM production_orders
+        ORDER BY due_date ASC, id DESC
+        LIMIT 20
+    </select>
+</mapper>
